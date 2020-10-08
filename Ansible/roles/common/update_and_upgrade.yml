@@ -1,0 +1,11 @@
+---
+- hosts: Servers
+  become: yes
+  vars_files:
+    - ../../group_vars/all.yml
+    - ../../group_vars/vault.yml
+  tasks:
+    - name: Update all package
+      apt:
+        update_cache: "yes"
+        upgrade: "yes"
