@@ -1,0 +1,13 @@
+[Ubuntu]
+192.168.xxx.xxx
+
+[Raspi]
+
+[Router]
+
+[Network:children]
+Router
+
+[Servers:children]
+Ubuntu
+Raspi
