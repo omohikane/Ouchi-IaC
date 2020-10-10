@@ -1,0 +1,23 @@
+---
+- name: create directory
+  file: 
+    path: ~/dnsmasq/
+    state: directory
+
+- name: create docker file for x86
+  vars: 
+    docker_image: alpine
+  template:
+    src: ../../../template/dns-masq/Dockerfile.j2
+    dest: ~/dnsmasq/Dockerfile
+    mode: 0644
+  when: ansible_architecture != 'armv7l'
+  
+- name: create docker file for arm
+  vars: 
+   docker_image: hypriot/rpi-alpine-scratch
+  template:
+    src: ../../../template/dns-masq/Dockerfile.j2
+    dest: ~/dnsmasq/Dockerfile
+    mode: 0644
+  when: ansible_architecture == 'armv7l'
