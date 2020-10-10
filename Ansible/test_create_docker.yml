@@ -1,0 +1,11 @@
+---
+- name: test create docker file
+  hosts: Ubuntu
+  gather_facts: yes
+  vars_files:
+    - group_vars/all.yml
+    - group_vars/vault.yml
+  roles:
+    - { role: dnsmasq, tags: dnsmasq }
+
+      
