@@ -1,0 +1,15 @@
+---
+- hosts: Redhat
+  gather_facts: False
+  remote_user: root
+
+  vars_prompt:
+  - name: yum_update
+    prompt: "Do you accept updates ?"
+    private: no
+    default: Y
+
+  tasks:
+    - name: Yum update packages
+      yum: name=* state=latest
+      when: yum_update == "Y"
