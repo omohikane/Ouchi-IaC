@@ -2,3 +2,4 @@ group_vars/all.yml
 group_vars/vault.yml
 inventories/inventory
 template/dnsmasq/dnsmasq.conf
+template/dnsmasq/hosts-dnsmasq
