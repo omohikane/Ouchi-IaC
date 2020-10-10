@@ -2,7 +2,6 @@
 
 自宅でIaCを実践してみたい､ということで立ててみたプロジェクト  
 コンテンツを充実させていきたい yamahaルータ､おまえだぞ･･････  
-Ansibleのベストプラクティスにそうと`main.yml`だらけになってわからなくなるため､ある程度ディレクトリ構造は踏襲しつつ変更している｡  
 目的はお家IaCである程度管理しやすくすること｡
 
 ## Features  
@@ -17,11 +16,19 @@ Debian系ディストリビューションばかりなのでコマンドはDebia
 主にLinuxサーバとAnsibleで構成しようと検討中  
 
 - Linux(Debian family)  
+  Ubuntu 20.04
+  RaspberryPi OS
+  
 - Ansible  
+  2.10
 
 ## Index  
 
 目次的な物
+
+- dnsmasq  
+  内向きDNSサーバとして利用する｡  
+  Dockerを使って環境依存しないようにする｡  
 
 
 ## Usage  
