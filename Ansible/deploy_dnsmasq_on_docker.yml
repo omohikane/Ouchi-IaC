@@ -1,0 +1,12 @@
+---
+- name: Deploy Dnsmasq on docker for DNS servers
+  hosts: DNSserver
+  gather_facts: yes
+  vars_files:
+    - group_vars/all.yml
+    - group_vars/vault.yml
+  roles:
+    - { role: docker, tags: docker }
+    - { role: dnsmasq, tags: dnsmasq }
+
+      
