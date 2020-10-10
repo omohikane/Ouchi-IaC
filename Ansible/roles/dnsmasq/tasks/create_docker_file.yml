@@ -8,7 +8,7 @@
   vars: 
     docker_image: alpine
   template:
-    src: ../../../template/dns-masq/Dockerfile.j2
+    src: ../../../template/dnsmasq/Dockerfile.j2
     dest: ~/dnsmasq/Dockerfile
     mode: 0644
   when: ansible_architecture != 'armv7l'
@@ -17,7 +17,7 @@
   vars: 
    docker_image: hypriot/rpi-alpine-scratch
   template:
-    src: ../../../template/dns-masq/Dockerfile.j2
+    src: ../../../template/dnsmasq/Dockerfile.j2
     dest: ~/dnsmasq/Dockerfile
     mode: 0644
   when: ansible_architecture == 'armv7l'
