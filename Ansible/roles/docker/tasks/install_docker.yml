@@ -1,0 +1,25 @@
+---
+- name: Download Docker
+  get_url:
+    url: https://get.docker.com
+    dest: /tmp/get-docker.sh
+    mode: a+x
+  become: true
+
+- name: Install Docker
+  shell: creates=/usr/bin/docker /tmp/get-docker.sh
+  become: true
+
+- name: Add ansible to docker group
+  user: name=ansible groups=docker append=yes
+  become: true
+
+# when need docker-compose, use this.
+#- name: Install python-pip
+#  apt: name=python-pip state=present
+#  become: true    
+#
+#- name: Install docker-compose
+#  pip:
+#    name: docker-compose
+#  become: true    
