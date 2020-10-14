@@ -1,0 +1,4 @@
+---
+# - name: main include tasks
+
+- include_tasks: roles/dnsmasq-docker/tasks/create_docker_file.yml

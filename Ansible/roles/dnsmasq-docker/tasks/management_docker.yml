@@ -1,0 +1,10 @@
+---
+- name: Build Dockerfile
+  comunity.general.docker.image:
+    path: ~/ansible/dnsmasq-docker/
+    name: dnsmasq
+
+- name: Run dnsmask docker container
+  docker_container:
+    name: "dnsmasq"
+    image: "dnsmasq"   
