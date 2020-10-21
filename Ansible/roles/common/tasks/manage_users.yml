@@ -2,8 +2,9 @@
 - name: Manage user 
   user: 
     name: "{{ item.user_name }}"
-    password: "{{ item.user_pass }}"
+    password: "{{ item.user_pass | password_hash('sha512') }}"
     groups: "{{ item.group_name }}"
+    shell: "{{ item.shell }}"
     state: "{{ item.user_state }}"
     ssh_key_type: "{{ item.ssh_key_type }}"
   loop: "{{ users }}"
