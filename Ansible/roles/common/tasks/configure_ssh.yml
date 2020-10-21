@@ -1,0 +1,10 @@
+---
+- name: Configure /etc/ssh/sshd_config
+  ansible.builtin.copy:
+    backup: no
+    src: ../../../template/common/sshd_config
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: root
+    mode: 0644
+  notify: Restart_sshd
