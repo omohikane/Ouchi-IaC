@@ -30,6 +30,12 @@ Debian系ディストリビューションばかりなのでコマンドはDebia
   - user
     ユーザの追加､削除をする｡  
 
+  - ssh
+    sshd_conf の設定をする｡  
+  
+  - storage
+    Storageの追加､マウントポイント作成とfstab編集｡  
+
 - dnsmasq  
   内向きDNSサーバとして利用する｡  
   Dockerを使って環境依存しないようにする｡  
