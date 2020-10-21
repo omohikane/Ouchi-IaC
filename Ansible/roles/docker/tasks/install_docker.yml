@@ -14,6 +14,14 @@
   user: name=ansible groups=docker append=yes
   become: true
 
+- name: Install docker
+  pip: name=docker executable=pip3
+  become: true    
+
+- name: Install docker-py
+  pip: name=docker-py executable=pip3
+  become: true    
+
 # when need docker-compose, use this.
 #- name: Install python-pip
 #  apt: name=python-pip state=present
