@@ -1,0 +1,6 @@
+---
+# - name: main include tasks
+
+- include_tasks: roles/common/tasks/manage_users.yml
+#- include_tasks: roles/common/tasks/configration_ssh.yml
+#- include_tasks: roles/common/tasks/configration_storage.yml
