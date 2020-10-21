@@ -1,0 +1,21 @@
+---
+- hosts: Raspi
+  vars_files:
+    - group_vars/all.yml
+    - group_vars/vault.yml
+
+  tasks:
+    - name: Build Dockerfile
+      community.general.docker_image:
+        name: dnsmasq
+        build:
+          path: /home/ansible/dnsmasq/
+        source: build
+      ignore_errors: true
+    
+    - name: Run dnsmask docker container
+      community.general.docker_container:
+        name: "dnsmasq"
+        image: "dnsmasq"   
+        auto_remove: yes
+        

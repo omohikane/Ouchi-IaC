@@ -1,0 +1,12 @@
+---
+- name: Manage Server setting
+  hosts: Ubuntu
+  become: yes 
+  gather_facts: yes
+  vars_files:
+    - group_vars/all.yml
+    - group_vars/vault.yml
+    - template/common/users.yml
+    - template/common/devices.yml
+  roles:
+    - { role: common, tags: manage }
