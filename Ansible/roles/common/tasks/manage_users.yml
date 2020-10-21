@@ -1,0 +1,9 @@
+---
+- name: Manage user 
+  user: 
+    name: "{{ item.user_name }}"
+    password: "{{ item.user_pass }}"
+    groups: "{{ item.group_name }}"
+    state: "{{ item.user_state }}"
+    ssh_key_type: "{{ item.ssh_key_type }}"
+  loop: "{{ users }}"
