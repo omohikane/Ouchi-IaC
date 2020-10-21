@@ -1,0 +1,18 @@
+---
+- name: Install samba
+  apt: name=samba state=latest
+
+- name: Create Share Directory for all user
+  file:
+    path: /home/share
+    state: directory
+    mode: 0777
+  
+- name: Create smb.conf
+  template:
+    src: ../../../template/samba/smb.conf
+    dest: /etc/samba/smb.conf
+    user: root
+    owner: root
+    mode: 0644
+
