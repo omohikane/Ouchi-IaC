@@ -1,0 +1,21 @@
+---
+- name: Install nfs-client
+  apt:
+    name: nfs-client
+    state: latest
+
+- name: Create mount point
+  file:
+    path: "{{ item.path }}"
+    state: directory
+  loop: "{{ devices }}"
+
+- name: Configure /etc/fstab
+  ansible.builtin.copy:
+    backup: no
+    src: ../../../template/common/fstab
+    dest: /etc/fstab
+    owner: root
+    group: root
+    mode: 0644
+    
