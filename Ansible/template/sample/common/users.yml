@@ -1,0 +1,3 @@
+users:
+#sample - { user_name: 'hoge' , user_pass: 'pass', group_name: '', user_state: 'present', ssh_key_type: 'rsa'}
+ - { user_name: 'hoge' , user_pass: 'pass', group_name: '', user_state: 'present', ssh_key_type: 'rsa'}
