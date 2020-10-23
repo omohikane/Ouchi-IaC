@@ -1,13 +1,13 @@
 ---
 - name: create directory
-  file: 
+  ansible.builtin.file: 
     path: ~/dnsmasq-docker/
     state: directory
 
 - name: create docker file for x86
   vars: 
     docker_image: alpine
-  template:
+  ansible.builtin.template:
     src: ../../../template/dnsmasq/Dockerfile.j2
     dest: ~/dnsmasq-docker/Dockerfile
     mode: 0644
@@ -16,7 +16,7 @@
 - name: create docker file for arm
   vars: 
    docker_image: hypriot/rpi-alpine-scratch
-  template:
+  ansible.builtin.template:
     src: ../../../template/dnsmasq/Dockerfile.j2
     dest: ~/dnsmasq-docker/Dockerfile
     mode: 0644

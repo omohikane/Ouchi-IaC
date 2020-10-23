@@ -1,6 +1,6 @@
 ---
 - name: Manage user 
-  user: 
+  ansible.builtin.user: 
     name: "{{ item.user_name }}"
     password: "{{ item.user_pass | password_hash('sha512') }}"
     groups: "{{ item.group_name }}"

@@ -1,11 +1,11 @@
 ---
 - name: Install nfs-client
-  apt:
+  ansible.builtin.apt:
     name: nfs-client
     state: latest
 
 - name: Create mount point
-  file:
+  ansible.builtin.file:
     path: "{{ item.path }}"
     state: directory
   loop: "{{ devices }}"
