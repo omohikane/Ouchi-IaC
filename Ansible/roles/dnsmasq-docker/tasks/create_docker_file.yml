@@ -1,20 +1,24 @@
 ---
 - name: create directory
-  ansible.builtin.file: 
+  ansible.builtin.file:
     path: ~/dnsmasq-docker/
     state: directory
 
+- name: check architecture
+  ansible.builtin.debug:
+    msg: "{{ ansible_architecture }}"
+
 - name: create docker file for x86
-  vars: 
+  vars:
     docker_image: alpine
   ansible.builtin.template:
     src: ../../../template/dnsmasq/Dockerfile.j2
     dest: ~/dnsmasq-docker/Dockerfile
     mode: 0644
   when: ansible_architecture != 'armv7l'
-  
+
 - name: create docker file for arm
-  vars: 
+  vars:
    docker_image: hypriot/rpi-alpine-scratch
   ansible.builtin.template:
     src: ../../../template/dnsmasq/Dockerfile.j2
