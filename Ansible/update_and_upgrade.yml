@@ -6,6 +6,6 @@
     - group_vars/vault.yml
   tasks:
     - name: Update all package
-      apt:
+      ansible.builtin.apt:
         update_cache: "yes"
         upgrade: "yes"
