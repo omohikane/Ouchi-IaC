@@ -1,33 +1,46 @@
 ---
-- name: Download Docker
-  ansible.builtin.get_url:
-    url: https://get.docker.com
-    dest: /tmp/get-docker.sh
-    mode: a+x
-  become: true
 
-- name: Install Docker
-  ansible.builtin.shell: creates=/usr/bin/docker /tmp/get-docker.sh
-  become: true
+- name: facts docker
+  command: docker -v
+  register: docker_fact
+
+- block:
+  - name: Download Docker
+    ansible.builtin.get_url:
+      url: https://get.docker.com
+      dest: /tmp/get-docker.sh
+      mode: a+x
+
+  - name: Install Docker
+    command: sh /tmp/get-docker.sh
+  when: docker_fact.failed == True
+
+- name: Docker service start
+  ansible.builtin.service:
+    name: docker
+    state: started
+    enabled: true
 
 - name: Add ansible to docker group
   ansible.builtin.user: name=ansible groups=docker append=yes
-  become: true
 
-- name: Install docker
+- name: Install python-pip
+  ansible.builtin.apt:
+    name:
+      - python3-dev
+      - python3-pip
+    state: latest
+  ignore_errors: yes
+
+- name: Install docker with pip3
   ansible.builtin.pip: name=docker executable=pip3
-  become: true    
+  ignore_errors: yes
+
 
 - name: Install docker-py
   ansible.builtin.pip: name=docker-py executable=pip3
-  become: true    
+  ignore_errors: yes
 
-# when need docker-compose, use this.
-#- name: Install python-pip
-#  ansible.builtin.apt: name=python-pip state=present
-#  become: true    
-#
-#- name: Install docker-compose
-#  ansible.builtin.pip:
-#    name: docker-compose
-#  become: true    
+- name: Install docker-compose
+  ansible.builtin.pip: name=docker-compose
+  ignore_errors: yes
