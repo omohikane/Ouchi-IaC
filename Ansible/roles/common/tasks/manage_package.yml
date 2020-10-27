@@ -1,0 +1,6 @@
+---
+- name: Manage package
+  ansible.builtin.apt:
+    name: "{{ item.name }}"
+    state: "{{ item.state }}"
+  loop: "{{ package }}"
