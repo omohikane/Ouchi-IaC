@@ -1,0 +1,21 @@
+---
+- name: Download EPGStation
+  ansible.builtin.git:
+    repo: https://github.com/l3tnun/docker-mirakurun-epgstation.git
+    dest: /home/ansible/docker-mirakurun-epgstation
+    update: no
+  become: false
+
+- name: Create docker-compose
+  ansible.builtin.copy:
+    src: ~/docker-mirakurun-epgstation/docker-compose-sample.yml
+    dest: ~/docker-mirakurun-epgstation/docker-compose.yml
+    remote_src: true
+  become: false
+
+- name: Create config.json
+  ansible.builtin.copy:
+    src: ~/docker-mirakurun-epgstation/epgstation/config/config.sample.json
+    dest: ~/docker-mirakurun-epgstation/epgstation/config/config.json
+    remote_src: true
+  become: false
