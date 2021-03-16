@@ -1,3 +1,4 @@
+test_*
 group_vars/all.yml
 group_vars/vault.yml
 inventories/inventory
