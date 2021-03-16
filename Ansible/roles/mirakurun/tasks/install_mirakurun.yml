@@ -1,0 +1,31 @@
+---
+- name: Download Mirakurun
+  ansible.builtin.git:
+    repo: https://github.com/Chinachu/docker-mirakurun-chinachu.git
+    dest: ~/docker-mirakurun-chinachu
+    update: no
+  become: false
+
+- name: Install npm,nodejs
+  ansible.builtin.apt:
+    name:
+      - nodejs
+      - npm
+    state: latest
+
+- name: Install npackage
+  community.general.npm:
+    name: n
+    global: yes
+    state: latest
+
+- name: Install node by n
+  command: n stable
+  become: true
+
+- name: Uninstall npm,nodejs
+  ansible.builtin.apt:
+    name:
+      - nodejs
+      - npm
+    state: absent
