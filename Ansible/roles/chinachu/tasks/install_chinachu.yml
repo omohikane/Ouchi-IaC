@@ -1,0 +1,6 @@
+---
+- name: Cloning  docker-mirakurun-chinachu
+  ansible.builtin.git:
+    repo: https://github.com/Chinachu/docker-mirakurun-chinachu.git
+    dest: ~/docker-mirakurun-chinachu
+  become: false
