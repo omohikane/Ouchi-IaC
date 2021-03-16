@@ -1,12 +1,17 @@
 ---
 - name: Manage Server setting
-  hosts: Ubuntu
-  become: yes 
+  hosts: Ubuntu-Servers
+  become: yes
   gather_facts: yes
   vars_files:
     - group_vars/all.yml
     - group_vars/vault.yml
     - template/common/users.yml
     - template/common/devices.yml
+    - template/common/package.yml
   roles:
-    - { role: common, tags: manage }
+#    - { role: common, tags: manage }
+#    - { role: samba, tags: manage }
+#    - { role: docker, tags: manage }
+#    - { role: mirakurun, tags: manage }
+#    - { role: epgstation, tags: manage }
