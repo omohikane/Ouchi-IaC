@@ -27,7 +27,12 @@
 
 目次的な物
 
-### roles
+### Ansible
+
+Ansible周りの設定｡  
+できるだけ手動での変更は避けて運用する｡  
+
+#### roles
 
 各ロールの説明｡  
 基本的にplaybookのみ置くようにする｡
@@ -63,21 +68,25 @@
 - samba
   ファイル共有サーバ｡  
 
-### template
+#### template
 
 rolesで使う変数や材料などいろいろ入れる｡  
 変更が多いので浅い階層に持ってきている｡  
 rolesで使う場合は相対パスで記載するようにする｡  
 
-### group_vars
+#### group_vars
 
 sshをするユーザやパスワードの指定など｡  
 
-### inventories
+#### inventories
 
 ansibleで管理する危機を記載する｡  
 
 ## Usage  
+
+設定項目など使い方説明｡  
+
+- Ansible
 
 SSHパスワード､Sudoパスワードを入れるのが面倒な場合､`group_vars/vault.yml`をAnsible Vaultで暗号化  
 Playbook実行時､暗号化した認証情報を利用するため`--extra-vars="@vault.yml"` をつけて暗号化したファイルを読み取るようにする｡  
