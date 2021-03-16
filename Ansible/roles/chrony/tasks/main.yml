@@ -1,0 +1,4 @@
+---
+
+- include_tasks: roles/chrony/tasks/install_chrony.yml
+- include_tasks: roles/chrony/tasks/setup_chrony.yml
