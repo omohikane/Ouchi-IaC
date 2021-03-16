@@ -16,12 +16,12 @@
 主にLinuxサーバとAnsibleで構成しようと検討中  
 
 - Linux(Debian family)  
-  Ubuntu 20.04
-  RaspberryPi OS
+  Ubuntu 20.04  
+  RaspberryPi OS  
   
 - Ansible  
-  ansible                           3.1.0
-  ansible-base                      2.10.7
+  ansible                           3.1.0  
+  ansible-base                      2.10.7  
 
 ## Index  
 
@@ -39,22 +39,22 @@ Ansible周りの設定｡
 複数のOS等またがっているので実行機器を限定するなど制御するようにする｡  
 
 - common
-  - user
+  - user  
     ユーザの追加､削除をする｡  
 
-  - ssh
+  - ssh  
     sshd_conf の設定をする｡  
 
-  - storage
+  - storage  
     Storageの追加､マウントポイント作成とfstab編集｡  
 
-  - package
+  - package  
     インストールするパッケージの設定｡  
 
-- chinachu/epgstation/mirakurun
+- chinachu/epgstation/mirakurun  
   録画システム｡  
 
-- chrony
+- chrony  
   NTPサーバ｡  
   家庭内の機器すべてが参照できるようにするのが理想｡  
 
@@ -62,10 +62,10 @@ Ansible周りの設定｡
   内向きDNSサーバとして利用する｡  
   Dockerを使って環境依存しないようにする｡  
 
-- docker
+- docker  
   dockerのインストール､セットアップなど｡  
 
-- samba
+- samba  
   ファイル共有サーバ｡  
 
 #### template
@@ -88,16 +88,16 @@ ansibleで管理する危機を記載する｡
 
 - Ansible
 
-SSHパスワード､Sudoパスワードを入れるのが面倒な場合､`group_vars/vault.yml`をAnsible Vaultで暗号化  
-Playbook実行時､暗号化した認証情報を利用するため`--extra-vars="@vault.yml"` をつけて暗号化したファイルを読み取るようにする｡  
-ansible.cfg の `ask_vault_pass = True` コメントアウトを外す｡  
-
-```shell
-
-$ ansible-playbook hogehoge.yml -i inventories/inventory  --extra-vars="@password.yml"
-Vault password:
-
-```
+  SSHパスワード､Sudoパスワードを入れるのが面倒な場合､`group_vars/vault.yml`をAnsible Vaultで暗号化  
+  Playbook実行時､暗号化した認証情報を利用するため`--extra-vars="@vault.yml"` をつけて暗号化したファイルを読み取るようにする｡  
+  ansible.cfg の `ask_vault_pass = True` コメントアウトを外す｡  
+  
+  ```shell
+  
+  $ ansible-playbook hogehoge.yml -i inventories/inventory  --extra-vars="@password.yml"
+  Vault password:
+  
+  ```
 
 ## Note  
 
