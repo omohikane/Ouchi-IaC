@@ -18,4 +18,3 @@
         name: "dnsmasq"
         image: "dnsmasq"   
         auto_remove: yes
-        
