@@ -3,6 +3,7 @@
 - name: facts docker
   command: docker -v
   register: docker_fact
+  ignore_errors: yes
 
 - block:
   - name: Download Docker
@@ -22,7 +23,10 @@
     enabled: true
 
 - name: Add ansible to docker group
-  ansible.builtin.user: name=ansible groups=docker append=yes
+  ansible.builtin.user:
+    name: ansible
+    groups: docker
+    append: yes
 
 - name: Install python-pip
   ansible.builtin.apt:
