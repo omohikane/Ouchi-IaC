@@ -1,0 +1,36 @@
+# This workflow will upload a Python Package using Twine when a release is created
+# For more information see: https://help.github.com/en/actions/language-and-framework-guides/using-python-with-github-actions#publishing-to-package-registries
+
+name: ansible lint
+
+on: [push]
+
+jobs:
+  deploy:
+
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install setuptools wheel twine
+        pip install ansible ansible-lint yaml-lint
+    - name: Ansible syntax check
+      run: |
+        ansible-playbook *.yml --syntax-check
+        
+    - name: Ansible ansible-lint
+      run: |
+        ansible-lint *.yml
+        
+    - name: Ansible yaml-lint
+      run: |
+        yaml-lint *.yml
