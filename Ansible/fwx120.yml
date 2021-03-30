@@ -1,0 +1,22 @@
+---
+- hosts: FWX120
+  vars_files:
+  - group_vars/yamaha.yml
+  collections:
+    - yamaha_network.rtx
+  connection: network_cli
+  tasks:
+    - name: get configuration
+      yamaha_network.rtx.rtx_command:
+        commands:
+        - show config
+      register: result
+
+    - name: debug
+      debug:
+        msg: "{{ result.stdout_lines[0] }}"
+
+    - name: set description
+      yamaha_network.rtx.rtx_config:
+        lines:
+        - description 1 yamaha
